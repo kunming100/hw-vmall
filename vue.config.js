@@ -4,7 +4,7 @@ const path = require("path");
 // Generate pages object
 const pagesObj = {};
 
-const chromeName = ["popup", "options"];
+const chromeName = ["popup"];
 
 chromeName.forEach(name => {
   pagesObj[name] = {
@@ -32,6 +32,19 @@ const plugins =
 module.exports = {
   pages: pagesObj,
   configureWebpack: {
+    entry: {
+      content: "./src/content/index.ts",
+      background: "./src/background/index.ts"
+    },
+    output: {
+      filename: "js/[name].js"
+    },
     plugins: [CopyWebpackPlugin(plugins)]
+  },
+  css: {
+    extract: {
+      filename: "css/[name].css"
+      // chunkFilename: 'css/[name].css'
+    }
   }
 };

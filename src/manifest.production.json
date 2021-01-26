@@ -1,10 +1,41 @@
 {
     "manifest_version": 2,
-    "name": "hw-vmall",
+    "name": "华为商城购物插件",
     "description": "华为商城购物插件",
     "version": "0.0.1",
-    "options_page": "options.html",
-    "browser_action": {
+    "icons": {
+        "16": "images/smartphone_16.ico",
+        "48": "images/smartphone_48.ico",
+        "64": "images/smartphone_128.ico"
+    },
+    "page_action": {
+        "default_icon": {
+            "16": "images/smartphone_16.ico",
+            "48": "images/smartphone_48.ico",
+            "64": "images/smartphone_128.ico"
+        },
+        "default_title": "购物插件",
         "default_popup": "popup.html"
-    }
+    },
+    "background": {
+        "scripts": [
+            "js/background.js"
+        ],
+        "persistent": true
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.vmall.com/*"],
+            "js": ["js/content.js"]
+        }
+    ],
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "webRequest",
+        "storage",
+        "declarativeContent",
+        "https://www.vmall.com/*"
+    ],
+    "devtools_page": "devtools.html"
 }
