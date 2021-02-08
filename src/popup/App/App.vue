@@ -1,22 +1,32 @@
 <template>
   <div class="main_app">
-    <h1>Hello popup</h1>
+    <div class="select-module">
+      <div class="module-title">手机</div>
+      <div class="module-content">
+        <el-checkbox-group>
+          <el-checkbox v-for="(phone, index) in phoneList" :key="index" :label="phone" />
+        </el-checkbox-group>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-export default {
-  name: "app"
-};
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  data() {
+    return {
+      phoneList: [
+        { key: 1, label: 'Mate 40' },
+        { key: 2, label: 'Mate 40 Pro' },
+        { key: 3, label: 'Mate 30 E' },
+      ]
+    };
+  }
+});
 </script>
 
 <style>
-.main_app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

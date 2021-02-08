@@ -1,11 +1,12 @@
-import Vue from "vue";
-import AppComponent from "./App/App.vue";
+import { createApp } from 'vue';
+import { ElButton, ElCheckboxGroup, ElCheckbox } from 'element-plus';
+import 'element-plus/lib/theme-chalk/index.css';
+import AppComponent from './App/App.vue';
 
-Vue.component("app-component", AppComponent);
+const app = createApp(AppComponent);
 
-new Vue({
-  el: "#app",
-  render: createElement => {
-    return createElement(AppComponent);
-  }
-});
+app.use(ElCheckboxGroup);
+app.use(ElCheckbox);
+app.use(ElButton);
+
+app.mount('#app');
